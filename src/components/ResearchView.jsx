@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { FileText, ExternalLink, Download } from "lucide-react";
-import { formatDate } from "../lib/documents";
 
 export default function ResearchView({ docs }) {
   const [index, setIndex] = useState(0);
@@ -27,7 +26,6 @@ export default function ResearchView({ docs }) {
             <FileText size={18} />
             <div>
               <div className="paper-name">{d.name}</div>
-              <div className="paper-date">{formatDate(d.date)}</div>
             </div>
           </button>
         ))}
