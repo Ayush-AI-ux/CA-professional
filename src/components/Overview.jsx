@@ -185,7 +185,7 @@ export default function Overview({ docs, onNavigate }) {
 
       <section className="contact-strip">
         <div>
-          <div className="cs-title">Open to CA Articleship opportunities</div>
+          <div className="cs-title">Open to CA Industrial Training</div>
           <div className="cs-sub">Happy to share more detail on any of the work above.</div>
         </div>
         <div className="cs-actions">
