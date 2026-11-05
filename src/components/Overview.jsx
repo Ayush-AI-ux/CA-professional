@@ -1,6 +1,5 @@
 // import { ArrowRight, Mail, Phone, ExternalLink, Download } from "lucide-react";
 // import { profile } from "../data/profile";
-// import { formatDate } from "../lib/documents";
 
 // const CATEGORY = {
 //   research: "Technical research",
@@ -79,20 +78,18 @@
 //                 <th>Ref</th>
 //                 <th>Particulars</th>
 //                 <th>Nature of work</th>
-//                 <th>Added</th>
 //                 <th></th>
 //               </tr>
 //             </thead>
 //             <tbody>
 //               {indexed.length === 0 ? (
-//                 <tr><td colSpan={5} className="mono">No documents yet.</td></tr>
+//                 <tr><td colSpan={4} className="mono">No documents yet.</td></tr>
 //               ) : (
 //                 indexed.map((d) => (
 //                   <tr key={d.path}>
 //                     <td className="mono ref">{d.ref}</td>
 //                     <td>{d.name}</td>
 //                     <td>{CATEGORY[d.section]}</td>
-//                     <td className="mono">{formatDate(d.date)}</td>
 //                     <td style={{ textAlign: "right" }}>
 //                       <button className="view-link" onClick={() => onNavigate(d.section)}>
 //                         View <ArrowRight size={14} />
@@ -108,8 +105,8 @@
 
 //       <section className="contact-strip">
 //         <div>
-//           <div className="cs-title">Open to CA Industrial Training</div>
-//           <div className="cs-sub">Happy to share more detail on any of the work above.</div>
+//           <div className="cs-title">Contact Details:</div>
+//           {/* <div className="cs-sub">Happy to share more detail on any of the work above.</div> */}
 //         </div>
 //         <div className="cs-actions">
 //           {email && (
@@ -132,25 +129,22 @@
 //   );
 // }
 
+
 import { ArrowRight, Mail, Phone, ExternalLink, Download } from "lucide-react";
 import { profile } from "../data/profile";
 
 const CATEGORY = {
   research: "Technical research",
   dashboard: "Analytical review",
-  workbooks: "Working paper (Excel)",
+  workbooks: "Excel Model",
 };
-const PREFIX = { research: "R", dashboard: "D", workbooks: "W" };
+
+// Order in which sections appear in the table
+const ORDER = ["research", "dashboard", "workbooks"];
 
 export default function Overview({ docs, onNavigate }) {
-  // Give every document an audit-style reference number: R-01, D-01, W-01...
-  const indexed = Object.keys(PREFIX).flatMap((section) =>
-    docs
-      .filter((d) => d.section === section)
-      .map((d, i) => ({
-        ...d,
-        ref: `${PREFIX[section]}-${String(i + 1).padStart(2, "0")}`,
-      }))
+  const indexed = ORDER.flatMap((section) =>
+    docs.filter((d) => d.section === section)
   );
 
   const particulars = [
@@ -166,7 +160,7 @@ export default function Overview({ docs, onNavigate }) {
     <>
       <div className="page-head">
         <h2>Candidate Profile</h2>
-        <p>Work samples prepared for review, indexed like working papers.</p>
+        {/* <p>Work samples prepared for review, indexed like working papers.</p> */}
       </div>
 
       <section className="profile-card">
@@ -209,7 +203,7 @@ export default function Overview({ docs, onNavigate }) {
           <table>
             <thead>
               <tr>
-                <th>Ref</th>
+                <th>S. No.</th>
                 <th>Particulars</th>
                 <th>Nature of work</th>
                 <th></th>
@@ -219,9 +213,9 @@ export default function Overview({ docs, onNavigate }) {
               {indexed.length === 0 ? (
                 <tr><td colSpan={4} className="mono">No documents yet.</td></tr>
               ) : (
-                indexed.map((d) => (
+                indexed.map((d, i) => (
                   <tr key={d.path}>
-                    <td className="mono ref">{d.ref}</td>
+                    <td className="mono ref">{i + 1}</td>
                     <td>{d.name}</td>
                     <td>{CATEGORY[d.section]}</td>
                     <td style={{ textAlign: "right" }}>
@@ -239,8 +233,8 @@ export default function Overview({ docs, onNavigate }) {
 
       <section className="contact-strip">
         <div>
-          <div className="cs-title">Open to CA Industrial Training</div>
-          <div className="cs-sub">Happy to share more detail on any of the work above.</div>
+          <div className="cs-title">Contact Details:</div>
+          {/* <div className="cs-sub">Happy to share more detail on any of the work above.</div> */}
         </div>
         <div className="cs-actions">
           {email && (

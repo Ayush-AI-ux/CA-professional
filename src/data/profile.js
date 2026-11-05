@@ -17,10 +17,10 @@ export const profile = {
     "EY Articleship Experience in Internal Audit, Risk Consulting & Internal Controls | Skilled in Risk Assessment, Process Evaluation & Data-Driven Insights",
 
   qualification: "B.com, CA Intermediate",
-  availability: "Immediately / from Dec 2026",
+  availability: "Immediately (from Dec 2026)",
   // location: "Gurugram, Haryana",
 
-  tools: ["MS Excel", "PowerBI", "SAP Hana", "Risk analysis", "Power Query", "Microsoft ofice", "VBA Excel", "Data Analysis"],
+  tools: ["MS Excel", "PowerBI", "SAP Hana", "Risk analysis", "Power Query", "Microsoft office", "VBA Excel", "Data Analysis"],
 
   strengths: [
     {
